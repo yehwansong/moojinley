@@ -22,7 +22,7 @@ top: 0;
 /* margin-left: -50vw; */
 /* margin-top: -50vw; */
 background-image: url('wrap.png');
-background-size: contain;
+background-size: 100% 125%;
 pointer-events: none;
 /* transform: skew(5deg, 5deg); */
 }
@@ -44,7 +44,7 @@ overflow: hidden;
     position: absolute;
     height: 45vw;
     border-radius: 100%;
-    bottom: 5vh;
+    bottom: 0vh;
     left: 0;
 }
 #live{
