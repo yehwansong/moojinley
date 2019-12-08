@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SamsaraMarket</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content = "width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" />
+  <meta name="apple-mobile-web-app-title" content="onlyWebPro" />
+</head>
+<body ontouchstart="soundin()">
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css"/>
+    <script type="text/javascript" src="pannellum.js"></script>
+    <script type="text/javascript" src="libpannellum.js"></script>
+    <script type="text/javascript" src="RequestAnimationFrame.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="script.js"></script>
+<div id="wrap"></div>
+<div id="panorama" ></div>
+<div id="panorama2">
+  <div id='shader'></div>
+</div>
+<div id='line'>
+  <div id="circle"></div>
+</div>
+    <audio id="audio" 
+        controls
+        src="worldless_1_1.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+<a href="https://www.youtube.com/watch?v=wzjWIxXBs_s"  target="_blank" id="live"></a>
+<script>
+
+// Hot spot creation function
+function hotspot(hotSpotDiv, args) {
+}
+    function soundout() { 
+           var audio = document.getElementById("audio");
+           audio.pause();
+    }
+    function soundin() { 
+      console.log('1')
+         var audio = document.getElementById("audio");
+         audio.play();
+    }
+$(window).bind('orientationchange resize', function(event){
+  if (event.orientation) {
+    if (event.orientation == 'landscape') {
+      if (window.rotation == 90) {
+        rotate(this, -90);
+      } else {
+        rotate(this, 90);
+      }
+    }
+  }
+});
+
+function rotate(el, degs) {
+  iedegs = degs/90;
+  if (iedegs < 0) iedegs += 4;
+  transform = 'rotate('+degs+'deg)';
+  iefilter = 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+iedegs+')';
+  styles = {
+    transform: transform,
+    '-webkit-transform': transform,
+    '-moz-transform': transform,
+    '-o-transform': transform,
+    filter: iefilter,
+    '-ms-filter': iefilter
+  };
+  $(el).css(styles);
+}
+
+
+
+viewer = pannellum.viewer('panorama', ﻿{
+    "type": "equirectangular",
+    "panorama": "examplepano.jpg",
+    "preview": "gray.jpg",
+    // "hotSpotDebug": true,
+    "hotSpots": [ 
+        {//1mellowsong  Center Pitch: 4.780283566889203, Center Yaw: 52.38215770325755, HFOV: 90
+            "pitch": 4.746553849886063,
+            "yaw": 52.38215770325755,
+            "cssClass": "custom-hotspot hotspot1",
+            "createTooltipFunc": hotspot
+        }
+    ]
+});
+viewer2 = pannellum.viewer('panorama2', ﻿{
+    "type": "equirectangular",
+    "panorama": "examplepano.jpg",
+    "preview": "gray.jpg"
+});
+      
+
+$(".cham").css('display', 'block');
+$(".logo").hide();
+$(".logo").css('top', "10000px");
+$(".mulogo").hide();
+$(".hotspot1").css('background-image', 'url("buttons/1mellowsong.png")');
+
+
+$(".hotspot1").css('height', window.innerHeight*0.06 + 'px');
+$(".hotspot1").css('width', window.innerHeight*0.12 + 'px');
+var b1 = $( ".hotspot1" );
+$(b1).css('background-image', 'url("buttons/1mellowsong.png")');
+$( b1 ).hover(
+);
+
+
+    $(".hotspot1").click(function(){
+        window.open('https://www.instagram.com/mellowsongc/')
+    });
+
+</script>
+
+</body>
+</html>
