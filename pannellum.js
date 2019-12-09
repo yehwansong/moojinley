@@ -75,10 +75,10 @@ var defaultConfig = {
     hfov: 90,
     minHfov: 50,
     maxHfov: 120,
-    pitch: 0,
+    pitch: -39,
     minPitch: undefined,
     maxPitch: undefined,
-    yaw: 0,
+    yaw: -71,
     minYaw: -180,
     maxYaw: 180,
     roll: 0,
@@ -90,7 +90,7 @@ var defaultConfig = {
     autoRotateStopDelay: 0,
     type: 'equirectangular',
     northOffset: 0,
-    showFullscreenCtrl: true,
+    showFullscreenCtrl: false,
     dynamic: false,
     doubleClickZoom: false,
     keyboardZoom: false,
@@ -98,7 +98,7 @@ var defaultConfig = {
     showZoomCtrl: false,
     autoLoad: true,
     showControls: false,
-    orientationOnByDefault: true,
+    orientationOnByDefault: false,
     hotSpotDebug: false,
     backgroundColor: [0, 0, 0],
     avoidShowingBackground: false,
@@ -888,53 +888,46 @@ function onDocumentTouchMove(event) {
 
         var yaw = (onPointerDownPointerX - clientX) * touchmovePanSpeedCoeff + onPointerDownYaw;
         speed.yaw = (yaw - config.yaw) % 360 * 0.2;
-        console.log(yaw)
 
         viewer2.setYaw(yaw);
         config.yaw = yaw;
 
         var pitch = (clientY - onPointerDownPointerY) * touchmovePanSpeedCoeff + onPointerDownPitch;
         speed.pitch = (pitch - config.pitch) * 0.2;
-        console.log(pitch)
-        if(pitch>-35){
-            soundin() 
-        }else{soundout()}
         viewer2.setPitch(pitch);
         config.pitch = pitch;
+        console.log([Math.floor(yaw),Math.floor(pitch)])
         if(pitch<-32 && pitch>-47 && yaw >-80 && yaw <-65){
             $('#live').fadeIn(300)
         }else{
             $('#live').fadeOut(300)
         }
-
+        showbutton(yaw,pitch)
         clearTimeout(blur);
         $('#panorama2 .pnlm-render-container').addClass('blur')
         blur = setTimeout(function(){$('#panorama2 .pnlm-render-container').removeClass('blur')}, 500);
     }
 }
 var elem = document.getElementsByTagName('body')[0]
-// elem.on('touchstart mousedown', function(e) {
-//     e.preventDefault();
-//     soundin()
-// });
-    function soundout() { 
-           var audio = document.getElementById("audio");
-           audio.pause();
+ function showbutton(yaw,pitch){
+    var points=[[23,3],[38,-15],[3, -30],[9, 16],[38, 24],[68, 8],[100, -2],[126, -34],[154, -36],[163, -17],[-207, -37],[123, 39], [101, 31],[-163, -29],[161, 26],[147, 43],[-25, 25],[15, 52],[-16, 77],[-33, -7] ]
+    for (var i = points.length - 1; i >= 0; i--) {
+        if((yaw>points[i][0]-5) && (yaw<points[i][0]+5) && (pitch>points[i][1]-5) && (pitch<points[i][1]+5)){
+            console.log('h')
+            $('#intro').fadeIn(300)
+            return;
+        }else{
+            console.log('h1')
+            $('#intro').fadeOut(300)
+        }
     }
-    function soundin() { 
-      console.log('1')
-         var audio = document.getElementById("audio");
-         audio.play();
-    }
-    // function soundin() { 
-    //      var audio = document.getElementById("audio");
-    //      audio.play();
-    // }
-
-/**
- * Event handler for end of touches. Stops panning and/or zooming.
- * @private
- */
+ }
+ $('#logo').bind('touchstart', function(e){
+    $('#info').fadeIn(300)
+});
+ $('#logo').bind('touchend', function(e){
+    $('#info').fadeOut(300)
+});
 function onDocumentTouchEnd() {
     isUserInteracting = false;
     if (Date.now() - latestInteraction > 150) {
