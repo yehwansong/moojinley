@@ -5,6 +5,7 @@
     @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 html{
     width: 100vw;
+    max-width: 60vh;
     height: 100%;
     padding: 0;
     margin: 0;
@@ -14,6 +15,7 @@ html{
 #wrap{
     background-repeat: no-repeat;
     width: 100vw;
+    max-width: 60vh;
     height: 100%;
     position: fixed;
     z-index: 1000000;
@@ -26,6 +28,7 @@ html{
 #panorama, body {
     position:fixed;
     width: 100vw;
+    max-width: 60vh;
     height: 100%;
     left: 0;
     top: 0;
@@ -40,6 +43,8 @@ html{
     z-index: 100000000;
     position: absolute;
     height: 45vw;
+    max-width: 30vh;
+    max-height: 30vh;
     border-radius: 100%;
     bottom: 0vh;
     left: 0;
@@ -155,6 +160,38 @@ iframe{
     position: absolute;
     top: 50%;
     width: 100vw;
+    max-width: 60vh;
     transform: translateY(-50%);
     display: none;
+}
+@media (min-aspect-ratio: 10/6) {
+    body {
+        transform: translateX(50vw);
+        margin-left: -30vh;
+    opacity: 0.5;
+    }
+    #line,#logo,#x{
+        display: none !important;
+    }
+}
+
+
+
+#demo_wrap{
+    left: 0;
+    z-index: 10000000000000000;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    color: white;
+    text-align: center;
+    padding-top: 40vh;}
+@media (min-aspect-ratio: 10/6) {
+    #demo_wrap{
+        padding-top: 50vh;
+    }
+}
+#demo{
+    color:white;
 }

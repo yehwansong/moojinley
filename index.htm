@@ -18,6 +18,9 @@
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
+<div id="demo_wrap">
+    <p id="demo"></p>
+</div>
 <div id="wrap"></div>
 <div id="panorama" ></div>
 <div id="panorama2">
@@ -36,6 +39,43 @@
 무진리는 만들어 지고있는 중입니다.
 무진-리 혹은 무-진리, 어떤 방식으로든 표현 가능한 무형의 공간. 
 무진한 아름다움을 선사합니다. 무진리는 만들어 지고있는 중입니다.</div>
+
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Dec 12, 2019 20:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    $('#demo_wrap').hide()
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+
+
+
+</script>
 <script>
 
 $(window).bind('orientationchange resize', function(event){
