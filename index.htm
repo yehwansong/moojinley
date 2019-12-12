@@ -18,8 +18,6 @@
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="script.js"></script>
 <div id="wrap"></div>
 <div id="panorama" ></div>
 <div id="panorama2">
@@ -39,6 +37,7 @@
 무진-리 혹은 무-진리, 어떤 방식으로든 표현 가능한 무형의 공간. 
 무진한 아름다움을 선사합니다. 무진리는 만들어 지고있는 중입니다.</div>
 <script>
+
 $(window).bind('orientationchange resize', function(event){
   if (event.orientation) {
     if (event.orientation == 'landscape') {
@@ -53,21 +52,27 @@ $(window).bind('orientationchange resize', function(event){
     
 
 function rotate(el, degs) {
-  iedegs = degs/90;
-  if (iedegs < 0) iedegs += 4;
-  transform = 'rotate('+degs+'deg)';
-  iefilter = 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+iedegs+')';
-  styles = {
-    transform: transform,
-    '-webkit-transform': transform,
-    '-moz-transform': transform,
-    '-o-transform': transform,
-    filter: iefilter,
-    '-ms-filter': iefilter
-  };
-  $(el).css(styles);
+    iedegs = degs/90;
+    if (iedegs < 0) iedegs += 4;
+    transform = 'rotate('+degs+'deg)';
+    iefilter = 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+iedegs+')';
+    styles = {
+        transform: transform,
+        '-webkit-transform': transform,
+        '-moz-transform': transform,
+        '-o-transform': transform,
+        filter: iefilter,
+        '-ms-filter': iefilter
+    };
+    $(el).css(styles);
 }
-
+$(document).ready(function(){
+    var w = window.innerWidth
+    var h = window.innerHeight
+    $('#circle').css({'top':(h/553)*(375/2)})
+    $('#line').css({'top':(h/553)*(375/2)})
+    $('#line').css({'height':(h/553)*(375*0.725)})
+})
 
 
 viewer = pannellum.viewer('panorama', ﻿{
@@ -88,28 +93,28 @@ $(".logo").css('top', "10000px");
 $(".mulogo").hide();
 small_move()
 function small_move(){
-if($('#panorama2').length>0){
-    var start_x
-    $('#panorama2').bind('touchstart',function(e){
-        $('#panorama2').removeClass('bouncing')
-        e.preventDefault();
-        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-        start_x = touch.pageX
-    });   
-    $('#panorama2').bind('touchmove',function(e){
-        e.preventDefault();
-        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-        var x = touch.pageX
-        console.log(x)
-        $('#panorama2').css({marginLeft:x-start_x})
-    });   
-    $('#panorama2').bind('touchend',function(e){
-        $('#panorama2').addClass('bouncing')
-        $('#panorama2').css({marginLeft:0})
-    });   
-}else{
-    setTimeout(function(){ small_move() }, 500);
-}
+    if($('#panorama2').length>0){
+        var start_x
+        $('#panorama2').bind('touchstart',function(e){
+            $('#panorama2').removeClass('bouncing')
+            e.preventDefault();
+            var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+            start_x = touch.pageX
+        });   
+        $('#panorama2').bind('touchmove',function(e){
+            e.preventDefault();
+            var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+            var x = touch.pageX
+            console.log(x)
+            $('#panorama2').css({marginLeft:x-start_x})
+        });   
+        $('#panorama2').bind('touchend',function(e){
+            $('#panorama2').addClass('bouncing')
+            $('#panorama2').css({marginLeft:0})
+        });   
+    }else{
+        setTimeout(function(){ small_move() }, 500);
+    }
 }
 
 

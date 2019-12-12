@@ -845,7 +845,6 @@ function onDocumentTouchStart(event) {
     fireEvent('touchstart', event);
     animateInit();
 }
-
 /**
  * Event handler for touch movements. Pans center of view if one touch or
  * adjusts zoom if two touches.
@@ -910,14 +909,43 @@ function onDocumentTouchMove(event) {
 }
 var elem = document.getElementsByTagName('body')[0]
  function showbutton(yaw,pitch){
-    var points=[[23,3],[38,-15],[3, -30],[9, 16],[38, 24],[68, 8],[100, -2],[126, -34],[154, -36],[163, -17],[-207, -37],[123, 39], [101, 31],[-163, -29],[161, 26],[147, 43],[-25, 25],[15, 52],[-16, 77],[-33, -7] ]
+    var points=[
+    [-62, 11],
+    [-33, -5],
+    [23, 4],
+    [10, 17],
+    [37, -16],
+    [67, 8],
+    [100, -1],
+    [126, -34],
+    [153, -36],
+    [165, -17], 
+    [-135, 12],
+    [-116, -9],
+    [-99, 14],
+    [-73, 26],
+    [-127, 34],
+    [9, 17],
+    [37, 24],
+    [99, 32],
+    [122, 38],
+    [148, 44],
+    [157, 0],
+    [-150, 51],
+    [-120, 53],
+    [-77, 51],
+    [-5, 51],
+    [14, 51],
+    [47, 48],
+    [100, 31],
+    [149, 43]
+    ]
     for (var i = points.length - 1; i >= 0; i--) {
         if((yaw>points[i][0]-5) && (yaw<points[i][0]+5) && (pitch>points[i][1]-5) && (pitch<points[i][1]+5)){
             console.log('h')
             $('#intro_button').fadeIn(300)
             return;
         }else{
-            console.log('h1')
             $('#intro_button').fadeOut(300)
         }
     }
