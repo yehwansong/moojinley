@@ -73,8 +73,8 @@ var config,
 
 var defaultConfig = {
     hfov: 90,
-    minHfov: 50,
-    maxHfov: 120,
+    minHfov: 90,
+    maxHfov: 90,
     pitch: -39,
     minPitch: undefined,
     maxPitch: undefined,
