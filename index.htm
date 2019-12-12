@@ -19,20 +19,24 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="script.js"></script>
 <div id="wrap"></div>
 <div id="panorama" ></div>
 <div id="panorama2">
-  <div id='shader'></div>
+    <div id='shader'></div>
 </div>
 <div id='line'>
-  <div id="circle"></div>
+    <div id="circle"></div>
 </div>
 <img id="logo" src="logo.png">
+<iframe id="live" src="https://www.youtube.com/embed/S_owIKAr8co" frameborder="0"></iframe>
+<iframe id="intro" src="https://www.youtube.com/embed/fXz96tbEKQs" frameborder="0"></iframe>
+<div id="live_button"></div>
+<div id="intro_button"></div>
 <div id="info">
-  김승옥 작가의 단편소설 ‘무진기행’속 아름다우나 머무를 수 없는 공간인 ‘무진’에서 가지고 온 이름입니다. 갤러리 <무진>은 자유롭게 공간을 변형시키고 재구성 하여, 전시 작가와 또 하나의 작품(공간)을 제시하고 새로운 시각을 제안하는 역할을 합니다.</div>
-<a href="live.html"  target="_blank" id="live"></a>
-<a href="intro.html"  target="_blank" id="intro"></a>
+무진리는 만들어 지고있는 중입니다.
+무진-리 혹은 무-진리, 어떤 방식으로든 표현 가능한 무형의 공간. 
+무진한 아름다움을 선사합니다. 무진리는 만들어 지고있는 중입니다.</div>
 <script>
 $(window).bind('orientationchange resize', function(event){
   if (event.orientation) {
@@ -45,6 +49,7 @@ $(window).bind('orientationchange resize', function(event){
     }
   }
 });
+    
 
 function rotate(el, degs) {
   iedegs = degs/90;
@@ -80,20 +85,32 @@ $(".cham").css('display', 'block');
 $(".logo").hide();
 $(".logo").css('top', "10000px");
 $(".mulogo").hide();
-$(".hotspot1").css('background-image', 'url("buttons/1mellowsong.png")');
+small_move()
+function small_move(){
+if($('#panorama2').length>0){
+    var start_x
+    $('#panorama2').bind('touchstart',function(e){
+        $('#panorama2').removeClass('bouncing')
+        e.preventDefault();
+        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        start_x = touch.pageX
+    });   
+    $('#panorama2').bind('touchmove',function(e){
+        e.preventDefault();
+        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        var x = touch.pageX
+        console.log(x)
+        $('#panorama2').css({marginLeft:x-start_x})
+    });   
+    $('#panorama2').bind('touchend',function(e){
+        $('#panorama2').addClass('bouncing')
+        $('#panorama2').css({marginLeft:0})
+    });   
+}else{
+    setTimeout(function(){ small_move() }, 500);
+}
+}
 
-
-$(".hotspot1").css('height', window.innerHeight*0.06 + 'px');
-$(".hotspot1").css('width', window.innerHeight*0.12 + 'px');
-var b1 = $( ".hotspot1" );
-$(b1).css('background-image', 'url("buttons/1mellowsong.png")');
-$( b1 ).hover(
-);
-
-
-    $(".hotspot1").click(function(){
-        window.open('https://www.instagram.com/mellowsongc/')
-    });
 
 </script>
 

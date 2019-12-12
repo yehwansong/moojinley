@@ -898,9 +898,9 @@ function onDocumentTouchMove(event) {
         config.pitch = pitch;
         console.log([Math.floor(yaw),Math.floor(pitch)])
         if(pitch<-32 && pitch>-47 && yaw >-80 && yaw <-65){
-            $('#live').fadeIn(300)
+            $('#live_button').fadeIn(300)
         }else{
-            $('#live').fadeOut(300)
+            $('#live_button').fadeOut(300)
         }
         showbutton(yaw,pitch)
         clearTimeout(blur);
@@ -914,14 +914,39 @@ var elem = document.getElementsByTagName('body')[0]
     for (var i = points.length - 1; i >= 0; i--) {
         if((yaw>points[i][0]-5) && (yaw<points[i][0]+5) && (pitch>points[i][1]-5) && (pitch<points[i][1]+5)){
             console.log('h')
-            $('#intro').fadeIn(300)
+            $('#intro_button').fadeIn(300)
             return;
         }else{
             console.log('h1')
-            $('#intro').fadeOut(300)
+            $('#intro_button').fadeOut(300)
         }
     }
  }
+var live_s = false
+var intro_s = false
+$("#live_button").click(function(){
+    $("#live").fadeIn(300)
+    live_s = true
+});
+$("#panorama").click(function(){
+    if(live_s){
+        $("#live").fadeOut(300)
+    }
+});
+$("#intro_button").click(function(){
+    console.log('heu')
+    $("#intro").fadeIn(300)
+    intro_s = true
+});
+$("#panorama").click(function(){
+    if(intro_s){
+        $("#intro").fadeOut(300)
+    }
+});
+
+
+
+
  $('#logo').bind('touchstart', function(e){
     $('#info').fadeIn(300)
 });
