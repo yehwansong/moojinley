@@ -48,6 +48,8 @@ html{
     background-image: url(play.svg);
     opacity: 0.5;
     background-size:contain;
+}
+#intro_button{
     display: none;
 }
 #panorama2{
