@@ -46,11 +46,18 @@ html{
 }
 #live_button, #intro_button{
     background-image: url(play.svg);
-    opacity: 0.5;
+    opacity: 0;
     background-size:contain;
-}
-#intro_button{
+    transition: 0.3s;
     display: none;
+}
+.fadeIn{
+    opacity: 0.5 !important;
+    display:block !important;
+}
+.fadeIn_1{
+    opacity: 1 !important;
+    display:block !important;
 }
 #panorama2{
     /*pointer-events: none;*/
@@ -131,6 +138,8 @@ audio{
     width: 12.5vw;
     top: 5px;
     right: 5px;
+    display: none;
+    opacity: 0
 } 
 #x{
     z-index: 100000000000;
@@ -138,7 +147,8 @@ audio{
     width: 10vw;
     top: 5px;
     right: 5px;
-    display: none
+    display: none;
+    opacity: 0
 }
 iframe{
     z-index: 1000000000000000;

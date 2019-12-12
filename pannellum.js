@@ -897,9 +897,9 @@ function onDocumentTouchMove(event) {
         config.pitch = pitch;
         console.log([Math.floor(yaw),Math.floor(pitch)])
         if(pitch<-32 && pitch>-47 && yaw >-80 && yaw <-65){
-            $('#live_button').fadeIn(300)
+            $('#live_button').addClass('fadeIn')
         }else{
-            $('#live_button').fadeOut(300)
+            $('#live_button').removeClass('fadeIn')
         }
         showbutton(yaw,pitch)
         clearTimeout(blur);
@@ -943,10 +943,10 @@ var elem = document.getElementsByTagName('body')[0]
     for (var i = points.length - 1; i >= 0; i--) {
         if((yaw>points[i][0]-5) && (yaw<points[i][0]+5) && (pitch>points[i][1]-5) && (pitch<points[i][1]+5)){
             console.log('h')
-            $('#intro_button').fadeIn(300)
+            $('#intro_button').addClass('fadeIn')
             return;
         }else{
-            $('#intro_button').fadeOut(300)
+            $('#intro_button').removeClass('fadeIn')
         }
     }
  }
@@ -954,29 +954,29 @@ var live_s = false
 var intro_s = false
 $("#live_button").click(function(){
     $("#live").fadeIn(300)
-    $("#x").fadeIn(300)
-    $("#logo").fadeIn(300)
+    $("#x").addClass('fadeIn_1')
+    $("#logo").removeClass('fadeIn_1')
     live_s = true
 });
 $("#x").click(function(){
     if(live_s){
         $("#live").fadeOut(300)
-        $("#x").fadeOut(300)
-        $("#logo").fadeOut(300)
+        $("#x").removeClass('fadeIn_1')
+        $("#logo").addClass('fadeIn_1')
     }
 });
 $("#intro_button").click(function(){
     console.log('heu')
     $("#intro").fadeIn(300)
-    $("#x").fadeIn(300)
-    $("#logo").fadeIn(300)
+    $("#x").addClass('fadeIn_1')
+    $("#logo").removeClass('fadeIn_1')
     intro_s = true
 });
 $("#x").click(function(){
     if(intro_s){
         $("#intro").fadeOut(300)
-        $("#x").fadeOut(300)
-        $("#logo").fadeIn(300)
+        $("#x").removeClass('fadeIn_1')
+        $("#logo").addClass('fadeIn_1')
     }
 });
 
