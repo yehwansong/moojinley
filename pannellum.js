@@ -926,23 +926,32 @@ var live_s = false
 var intro_s = false
 $("#live_button").click(function(){
     $("#live").fadeIn(300)
+    $("#x").fadeIn(300)
+    $("#logo").fadeIn(300)
     live_s = true
 });
-$("#panorama").click(function(){
+$("#x").click(function(){
     if(live_s){
         $("#live").fadeOut(300)
+        $("#x").fadeOut(300)
+        $("#logo").fadeOut(300)
     }
 });
 $("#intro_button").click(function(){
     console.log('heu')
     $("#intro").fadeIn(300)
+    $("#x").fadeIn(300)
+    $("#logo").fadeIn(300)
     intro_s = true
 });
-$("#panorama").click(function(){
+$("#x").click(function(){
     if(intro_s){
         $("#intro").fadeOut(300)
+        $("#x").fadeOut(300)
+        $("#logo").fadeIn(300)
     }
 });
+
 
 
 
