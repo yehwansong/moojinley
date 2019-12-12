@@ -127,7 +127,7 @@ audio{
     z-index: 10000000000;
     position: absolute;
     width: 10vw;
-    top: 0;
+    top: 10px;
     right: 10px;
 }
 iframe{
